@@ -4,17 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartBar, faUser, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.png';
 import './WelcomePage.css';
-import ManageAccounts from './ManageAccounts';
 import Trainlist from './Trainlist';
+import BookingInfo from './BookingInfo';
+import AdminHeader from './AdminHeader';
+import AdminSidebar from './AdminSidebar';
+
 
 function WelcomePage() {
-  const navigate = useNavigate();
   const location = useLocation();
   const [sidebarClosed, setSidebarClosed] = useState(false);
 
   const handleLogout = () => {
     // Perform logout logic here
-    navigate('/'); // Redirect to the welcome page after logout
+    navigate('/App.jsx'); // Redirect to the welcome page after logout
   };
 
   const toggleSidebar = () => {
@@ -36,7 +38,9 @@ function WelcomePage() {
           <span className="welcome-page-logo-text">VEE EXPRESS</span>
         </div>
         <button className="logout-button" onClick={handleLogout}>
-          Logout
+        <Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={handleLogout}>
+            Logout
+         </Link>
         </button>
       </nav>
       <div className="welcome-page-content">
@@ -44,30 +48,33 @@ function WelcomePage() {
           <ul className="sidebar-nav">
             <li>
               <Link
-                to="/"
-                className={location.pathname === '/' ? 'active' : ''}
-              >
+                to="/WelcomePage"
+                className={location.pathname === '/WelcomePage' ? 'active' : ''} >
                 <FontAwesomeIcon icon={faChartBar} size="lg" />
                 <span>Dashboard</span>
               </Link>
             </li>
             <li>
               <Link
-                to="/ManageAccounts"
-                className={location.pathname === '/ManageAccounts' ? 'active' : ''}
-              >
-                <FontAwesomeIcon icon={faUser} size="lg" />
-                <span>Manage Accounts</span>
+                to="/BookingInfo"
+                className={location.pathname === '/BookingInfo' ? 'active' : ''} >
+                <FontAwesomeIcon icon={faChartBar} size="lg" />
+                <span>BookingInfo</span>
               </Link>
-            </li>
+              </li>
+              <li>
+              <Link
+                to="/BookingInfo"
+                className={location.pathname === '/BookingInfo' ? 'active' : ''} >
+                <FontAwesomeIcon icon={faChartBar} size="lg" />
+                <span>Manage Trains</span>
+              </Link>
+              </li>
           </ul>
         </aside>
         <div className="welcome-page-main">
           <h1>Welcome to the Dashboard</h1>
           <Trainlist />
-          <Routes>
-            <Route path="/" element={<ManageAccounts />} />
-          </Routes>
         </div>
       </div>
     </div>

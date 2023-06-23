@@ -1,4 +1,3 @@
-import Header from './assets/components/Header'
 import React, { useState } from 'react';
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -8,6 +7,8 @@ import Book from './assets/pages/Book';
 import Cancel from './assets/pages/Cancel';
 import Login from './assets/pages/Login';
 import WelcomePage from './assets/pages/WelcomePage';
+import BookingInfo from './assets/pages/BookingInfo'
+import ManageTrains from './assets/pages/ManageTrains'
 
   
 const App = () => {
@@ -19,11 +20,8 @@ const App = () => {
   };
   return (
     <>
-    
-   
     <BrowserRouter>
       <div className='App'>
-        <Header/>
         <Routes>
           <Route index path="/" element={<Home/>} />
           <Route path="/trains" element={<Train/>} />
@@ -31,6 +29,9 @@ const App = () => {
           <Route path="/cancel" element={<Cancel/>} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/WelcomePage" element={<WelcomePage handleLogout={handleLogout} />} />
+          <Route path="/BookingInfo" element={<BookingInfo/>} />
+          <Route path="/ManageTrains" element={<ManageTrains/>} />
+
         </Routes>
       </div>
     

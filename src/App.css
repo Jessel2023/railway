@@ -1,4 +1,11 @@
-.bg {
-    background-image: url(./assets/images/bg-r2.jpg);
+
+.bg-image{
+   
+    background-image: url(/src/assets/images/bg-r2.jpg);
     background-size: cover;
+    background-position: center;
+}
+
+.bg-color {
+    background-color: rgb(251 146 60);
 }
